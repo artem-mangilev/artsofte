@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-transfer',
@@ -12,12 +12,14 @@ export class TransferComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      cardNumber: '1111 1111 1111 1111',
-    })
+    const validCardRegex = /^\d{4} \d{4} \d{4} \d{4}$/
 
-    this.form.get('cardNumber').valueChanges.subscribe((value) => {
-      console.log(value)
+    this.form = this.fb.group({
+      senderCardNumber: ['', [Validators.pattern(validCardRegex)]],
+      senderName: ['', [Validators.required]],
+      senderCardExpirationDate: ['', [Validators.required]],
+      receiverCardNumber: ['', [Validators.pattern(validCardRegex)]],
+      moneyAmount: [0, [Validators.required, Validators.min(1)]],
     })
   }
 }

@@ -2,27 +2,31 @@
   <div class="sender-card">
     <h3>Карта плательщика</h3>
 
-    <!-- CardNumberComponent -->
-    <app-card-number formControlName="cardNumber"></app-card-number>
+    <app-card-number formControlName="senderCardNumber"></app-card-number>
 
     <label>
       <span>ФИО держателя</span>
-      <input type="text" />
+      <input type="text" formControlName="senderName" />
     </label>
 
     <label>
       <span>Активна до</span>
-      <input type="month" />
+      <input type="month" formControlName="senderCardExpirationDate" />
     </label>
   </div>
 
   <div class="receiver-card">
     <h3>Карта получателя</h3>
 
-    <!-- CardNumberComponent -->
+    <app-card-number formControlName="receiverCardNumber"></app-card-number>
   </div>
 
-  <input type="number" min="0" placeholder="Сумма" />
+  <input
+    type="number"
+    min="0"
+    placeholder="Сумма"
+    formControlName="moneyAmount"
+  />
 
-  <button type="submit">Перевести</button>
+  <button type="submit" *ngIf="form.valid">Перевести</button>
 </form>
