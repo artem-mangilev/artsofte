@@ -10,8 +10,8 @@
 
   <tr *ngFor="let transfer of transfers; index as i">
     <th>{{ i + 1 }}</th>
-    <th>{{ transfer.senderCardNumber }}</th>
-    <th>{{ transfer.receiverCardNumber }}</th>
+    <th>{{ transfer.senderCardNumber | cardHider }}</th>
+    <th>{{ transfer.receiverCardNumber | cardHider }}</th>
     <th>{{ transfer.moneyAmount | currency }}</th>
     <th>{{ transfer.transferDate | date }}</th>
     <th>
