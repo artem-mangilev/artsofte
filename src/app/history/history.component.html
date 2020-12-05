@@ -1,1 +1,22 @@
-<p>history works!</p>
+<table border="1">
+  <tr>
+    <th>№</th>
+    <th>Карта плательщика</th>
+    <th>Карта получателя</th>
+    <th>Сумма</th>
+    <th>Дата выполнения</th>
+    <th>Действие</th>
+  </tr>
+
+  <tr *ngFor="let transfer of transfers; index as i">
+    <th>{{ i + 1 }}</th>
+    <th>{{ transfer.senderCardNumber }}</th>
+    <th>{{ transfer.receiverCardNumber }}</th>
+    <th>{{ transfer.moneyAmount | currency }}</th>
+    <th>{{ transfer.transferDate | date }}</th>
+    <th>
+      <button>Повторить</button>
+      <button>Удалить</button>
+    </th>
+  </tr>
+</table>

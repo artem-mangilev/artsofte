@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { Transfer, TransfersStoreService } from '../transfers-store.service'
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
-  styleUrls: ['./history.component.scss']
+  styleUrls: ['./history.component.scss'],
 })
 export class HistoryComponent implements OnInit {
+  constructor(private transfersStoreService: TransfersStoreService) {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  get transfers(): Transfer[] {
+    return this.transfersStoreService.getAllTransfers()
   }
-
 }
