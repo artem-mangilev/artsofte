@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
   <div class="sender-card">
     <h3>Карта плательщика</h3>
 
