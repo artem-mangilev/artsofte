@@ -14,7 +14,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
   ],
 })
 export class CardNumberComponent implements OnInit, ControlValueAccessor {
-  cardNumberSegments: string[] = Array(4).fill('')
+  cardNumberSegments: string[]
 
   constructor() {}
 
@@ -30,7 +30,11 @@ export class CardNumberComponent implements OnInit, ControlValueAccessor {
   }
 
   writeValue(value: string) {
-    this.cardNumberSegments = value.split(' ')
+    if (value) {
+      this.cardNumberSegments = value.split(' ')
+    } else {
+      this.cardNumberSegments = Array(4).fill('')
+    }
   }
 
   registerOnChange(fn) {
