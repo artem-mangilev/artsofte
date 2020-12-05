@@ -14,4 +14,8 @@ export class HistoryComponent implements OnInit {
   get transfers(): Transfer[] {
     return this.transfersStoreService.getAllTransfers()
   }
+
+  onDeleteButtonClick(index: number) {
+    this.transfersStoreService.removeTransfer(index)
+  }
 }

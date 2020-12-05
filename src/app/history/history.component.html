@@ -16,7 +16,7 @@
     <th>{{ transfer.transferDate | date }}</th>
     <th>
       <button>Повторить</button>
-      <button>Удалить</button>
+      <button (click)="onDeleteButtonClick(i)">Удалить</button>
     </th>
   </tr>
 </table>
