@@ -1,0 +1,21 @@
+<!-- TODO: refactor this shit with *ngFor -->
+<input
+  type="text"
+  (input)="onInput(0, $event.target.value)"
+  [value]="cardNumberSegments[0]"
+/>
+<input
+  type="text"
+  (input)="onInput(1, $event.target.value)"
+  [value]="cardNumberSegments[1]"
+/>
+<input
+  type="text"
+  (input)="onInput(2, $event.target.value)"
+  [value]="cardNumberSegments[2]"
+/>
+<input
+  type="text"
+  (input)="onInput(3, $event.target.value)"
+  [value]="cardNumberSegments[3]"
+/>

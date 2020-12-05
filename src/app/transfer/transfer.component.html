@@ -1,1 +1,28 @@
-<p>transfer works!</p>
+<form [formGroup]="form">
+  <div class="sender-card">
+    <h3>Карта плательщика</h3>
+
+    <!-- CardNumberComponent -->
+    <app-card-number formControlName="cardNumber"></app-card-number>
+
+    <label>
+      <span>ФИО держателя</span>
+      <input type="text" />
+    </label>
+
+    <label>
+      <span>Активна до</span>
+      <input type="month" />
+    </label>
+  </div>
+
+  <div class="receiver-card">
+    <h3>Карта получателя</h3>
+
+    <!-- CardNumberComponent -->
+  </div>
+
+  <input type="number" min="0" placeholder="Сумма" />
+
+  <button type="submit">Перевести</button>
+</form>
