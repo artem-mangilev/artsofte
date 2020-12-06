@@ -13,7 +13,7 @@
     <th>{{ transfer.senderCardNumber | cardHider }}</th>
     <th>{{ transfer.receiverCardNumber | cardHider }}</th>
     <th>{{ transfer.moneyAmount | currency: 'RUB':'':'1.0' }}</th>
-    <th>{{ transfer.transferDate | date }}</th>
+    <th>{{ transfer.transferDate | date: 'dd.MM.yyyy' }}</th>
     <th>
       <button (click)="onRepeatButtonClick(i)">Повторить</button>
       <button (click)="onDeleteButtonClick(i)">Удалить</button>
