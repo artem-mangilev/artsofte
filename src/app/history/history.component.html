@@ -9,14 +9,14 @@
   </tr>
 
   <tr *ngFor="let transfer of transfers; index as i">
-    <th>{{ i + 1 }}</th>
-    <th>{{ transfer.senderCardNumber | cardHider }}</th>
-    <th>{{ transfer.receiverCardNumber | cardHider }}</th>
-    <th>{{ transfer.moneyAmount | currency: 'RUB':'':'1.0' }}</th>
-    <th>{{ transfer.transferDate | date: 'dd.MM.yyyy' }}</th>
-    <th>
+    <td>{{ i + 1 }}</td>
+    <td>{{ transfer.senderCardNumber | cardHider }}</td>
+    <td>{{ transfer.receiverCardNumber | cardHider }}</td>
+    <td>{{ transfer.moneyAmount | currency: 'RUB':'':'1.0' }}</td>
+    <td>{{ transfer.transferDate | date: 'dd.MM.yyyy' }}</td>
+    <td>
       <button (click)="onRepeatButtonClick(i)">Повторить</button>
       <button (click)="onDeleteButtonClick(i)">Удалить</button>
-    </th>
+    </td>
   </tr>
 </table>
