@@ -1,23 +1,27 @@
 <!-- TODO: refactor this shit with *ngFor -->
 <input
+  #input
   type="text"
   maxlength="4"
   (input)="onInput(0, $event.target.value)"
   [value]="cardNumberSegments[0]"
 />
 <input
+  #input
   type="text"
   maxlength="4"
   (input)="onInput(1, $event.target.value)"
   [value]="cardNumberSegments[1]"
 />
 <input
+  #input
   type="text"
   maxlength="4"
   (input)="onInput(2, $event.target.value)"
   [value]="cardNumberSegments[2]"
 />
 <input
+  #input
   type="text"
   maxlength="4"
   (input)="onInput(3, $event.target.value)"

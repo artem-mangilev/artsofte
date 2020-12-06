@@ -1,4 +1,11 @@
-import { Component, forwardRef, OnInit } from '@angular/core'
+import {
+  Component,
+  ElementRef,
+  forwardRef,
+  OnInit,
+  QueryList,
+  ViewChildren,
+} from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 
 @Component({
@@ -16,6 +23,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 export class CardNumberComponent implements OnInit, ControlValueAccessor {
   cardNumberSegments: string[]
 
+  @ViewChildren('input') inputs: QueryList<ElementRef>
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -23,6 +32,11 @@ export class CardNumberComponent implements OnInit, ControlValueAccessor {
   onChange(value: string) {}
 
   onInput(index: number, value: string) {
+    if (value.length === 4) {
+      const nextInputElement = this.inputs.toArray()[index + 1]?.nativeElement
+      nextInputElement?.focus()
+    }
+
     this.cardNumberSegments[index] = value
 
     const stringified = this.cardNumberSegments.join(' ')
