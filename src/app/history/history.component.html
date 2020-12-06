@@ -12,7 +12,7 @@
     <th>{{ i + 1 }}</th>
     <th>{{ transfer.senderCardNumber | cardHider }}</th>
     <th>{{ transfer.receiverCardNumber | cardHider }}</th>
-    <th>{{ transfer.moneyAmount | currency }}</th>
+    <th>{{ transfer.moneyAmount | currency: 'RUB':'':'1.0' }}</th>
     <th>{{ transfer.transferDate | date }}</th>
     <th>
       <button (click)="onRepeatButtonClick(i)">Повторить</button>
