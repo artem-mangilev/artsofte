@@ -15,7 +15,7 @@
     <th>{{ transfer.moneyAmount | currency }}</th>
     <th>{{ transfer.transferDate | date }}</th>
     <th>
-      <button>Повторить</button>
+      <button (click)="onRepeatButtonClick(i)">Повторить</button>
       <button (click)="onDeleteButtonClick(i)">Удалить</button>
     </th>
   </tr>

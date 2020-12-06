@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
 import { Transfer, TransfersStoreService } from '../transfers-store.service'
 
 @Component({
@@ -7,7 +8,10 @@ import { Transfer, TransfersStoreService } from '../transfers-store.service'
   styleUrls: ['./history.component.scss'],
 })
 export class HistoryComponent implements OnInit {
-  constructor(private transfersStoreService: TransfersStoreService) {}
+  constructor(
+    private transfersStoreService: TransfersStoreService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -17,5 +21,9 @@ export class HistoryComponent implements OnInit {
 
   onDeleteButtonClick(index: number) {
     this.transfersStoreService.removeTransfer(index)
+  }
+
+  onRepeatButtonClick(index: number) {
+    this.router.navigate(['/transfer', { repeatedTransferIndex: index }])
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { ActivatedRoute } from '@angular/router'
 import { Transfer, TransfersStoreService } from '../transfers-store.service'
 
 @Component({
@@ -12,6 +13,7 @@ export class TransferComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private route: ActivatedRoute,
     private transfersStoreService: TransfersStoreService
   ) {}
 
@@ -25,6 +27,25 @@ export class TransferComponent implements OnInit {
       receiverCardNumber: ['', [Validators.pattern(validCardRegex)]],
       moneyAmount: [0, [Validators.required, Validators.min(1)]],
     })
+
+    const transferIndex = this.route.snapshot.paramMap.get(
+      'repeatedTransferIndex'
+    )
+
+    if (transferIndex !== null) {
+      const transfer = this.transfersStoreService.getTransfer(+transferIndex)
+      const expirationDate = this.getYearAndMonth(
+        transfer.senderCardExpirationDate
+      )
+
+      this.form.setValue({
+        senderName: transfer.senderName,
+        senderCardNumber: transfer.senderCardNumber,
+        senderCardExpirationDate: expirationDate,
+        receiverCardNumber: transfer.receiverCardNumber,
+        moneyAmount: transfer.moneyAmount,
+      })
+    }
   }
 
   onSubmit(formData) {
@@ -35,5 +56,11 @@ export class TransferComponent implements OnInit {
     }
 
     this.transfersStoreService.addTransfer(transfer)
+  }
+
+  private getYearAndMonth(date: Date): string {
+    const year = date.getFullYear()
+    const month = (date.getMonth() + 1).toString().padStart(2, '0')
+    return `${year}-${month}`
   }
 }
