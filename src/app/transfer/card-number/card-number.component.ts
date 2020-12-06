@@ -23,7 +23,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 export class CardNumberComponent implements OnInit, ControlValueAccessor {
   cardNumberSegments: string[]
 
-  @ViewChildren('input') inputs: QueryList<ElementRef>
+  @ViewChildren('input') inputs: QueryList<ElementRef<HTMLInputElement>>
 
   constructor() {}
 
@@ -41,6 +41,15 @@ export class CardNumberComponent implements OnInit, ControlValueAccessor {
 
     const stringified = this.cardNumberSegments.join(' ')
     this.onChange(stringified)
+  }
+
+  onBackspace(index: number) {
+    const inputs = this.inputs.toArray()
+
+    if (inputs[index].nativeElement.value.length === 0) {
+      const prevInputElement = inputs[index - 1]?.nativeElement
+      prevInputElement?.focus()
+    }
   }
 
   writeValue(value: string) {
